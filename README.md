@@ -44,9 +44,6 @@ $ cd godate
 # build & run the application
 $ make run
 
-# build & run lint
-$ make run-lint
-
 # check if the containers are running
 $ docker ps
 

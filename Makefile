@@ -18,9 +18,6 @@ build:
 run:
 	docker compose up --build -d
 
-run-lint:
-	docker compose up --build -d lint
-
 stop:
 	docker compose down
 
