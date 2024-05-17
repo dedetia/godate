@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  godate:
+    container_name: godate
+    image: godate
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PHOTO_DIR: /app/assets/img
+    restart: on-failure
+    depends_on:
+      - mongo
+      - lint
+    healthcheck:
+      test: nc -z localhost 8000
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    volumes:
+      - ./assets/img:/app/assets/img
+    networks:
+      - mynet
+
+  lint:
+    container_name: lint
+    image: golangci/golangci-lint:v1.42.1
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: [ "golangci-lint", "run" ]
+
+  mongo:
+    container_name: mongo_container
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: datedb
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local

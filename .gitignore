@@ -1,0 +1,7 @@
+*.test
+*.out
+vendor
+godate
+.idea
+*.html
+assets

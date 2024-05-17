@@ -1,0 +1,7 @@
+linters-setting:
+  disable:
+    - golint
+    - stylecheck
+    - gofmt
+    - goimports
+    - typecheck
