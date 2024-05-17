@@ -4,11 +4,10 @@ import "github.com/spf13/viper"
 
 type (
 	MainConfig struct {
-		Server         Server   `mapstructure:"server"`
-		Database       Database `mapstructure:"database"`
-		PhotoDirectory string   `mapstructure:"photo_directory"`
-		BaseUrlPhoto   string   `mapstructure:"base_url_photo"`
-		PrivateKey     string   `mapstructure:"private_key"`
+		Server       Server   `mapstructure:"server"`
+		Database     Database `mapstructure:"database"`
+		BaseUrlPhoto string   `mapstructure:"base_url_photo"`
+		PrivateKey   string   `mapstructure:"private_key"`
 	}
 
 	Server struct {
